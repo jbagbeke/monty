@@ -1,13 +1,13 @@
-#include "lists.h"
+#include "monty.h"
 
 /**
  * dlistint_len - calculates number of elements in d-list
  * @h: Pointer to first element of doubly-linked list
  * Return: Number of elements in list
  */
-size_t dlistint_len(const dlistint_t *h)
+int monty_calc(stack_t *h)
 {
-	size_t num = 0;
+	int num = 0;
 
 	while (h != NULL)
 	{

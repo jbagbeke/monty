@@ -6,20 +6,16 @@
  * @line_number: data of new node to be added
  * Return: New node added
  */
-stack_t *monty_add__end(stack_t **head)
+stack_t *monty_add__end(stack_t *node1)
 {
-	stack_t *node1, *ptr;
-
-	node1 = malloc(sizeof(stack_t));
-	if (!node1)
-		return (NULL);
+	stack_t *ptr;
 
 	node1->next = NULL;
 
-	ptr = *head;
+	ptr = *monty_head;
 	if (ptr == NULL)
 	{
-		*head = node1;
+		*monty_head = node1;
 		node1->prev = ptr;
 		return (node1);
 	}

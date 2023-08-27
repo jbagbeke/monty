@@ -49,10 +49,11 @@ instruction_t *select_funct(int func_num, char *buf);
 int monty_exe(char **b, int func_num, unsigned int num);
 int check_validity(char *buffer);
 int count_tokens(char **buffer);
-stack_t *add_node(stack_t **head);
-stack_t *monty_add__end(stack_t **head);
-size_t monty_print(stack_t *h);
+stack_t *add_node(stack_t *node1);
+stack_t *monty_add__end(stack_t *node1);
+void monty_print();
 void monty_push(stack_t **stack, unsigned int line_number);
+int monty_calc(stack_t *h);
 
 
 #endif /* MONTY_H */

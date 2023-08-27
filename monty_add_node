@@ -6,19 +6,13 @@
  * @n: Integer to store in data part of node
  * Return: Pointer to first node of d-list
  */
-stack_t *add_node(stack_t **head)
+stack_t *add_node(stack_t *node1)
 {
-	stack_t *node1;
+	node1->next = *monty_head;
 
-	node1 = malloc(sizeof(stack_t));
-	if (!node1)
-		return (NULL);
+	if (*monty_head != NULL)
+		(*monty_head)->prev = node1;
 
-	node1->next = *head;
-
-	if (*head != NULL)
-		(*head)->prev = node1;
-
-	*head = node1;
+	monty_head = node1;
 	return (node1);
 }
