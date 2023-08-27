@@ -55,6 +55,7 @@ void monty_pall(stack_t **stack, unsigned int line_number);
 void monty_push(stack_t **stack, unsigned int line_number);
 int monty_calc(stack_t *h);
 void push_error(unsigned int num);
+void monty_free(void);
 
 
 #endif /* MONTY_H */

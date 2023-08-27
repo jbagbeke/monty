@@ -5,18 +5,17 @@
  * @head: Pointer to first node
  * Return: Void
  */
-void free_dlistint(dlistint_t *head)
+void monty_free(stack_t *head)
 {
-	dlistint_t *ptr;
+stack_t *ptr;
 
-	if (head == NULL)
-		return;
-
-	while (head != NULL)
-	{
-		ptr = head;
-		head = head->next;
-		free(ptr);
-	}
-	ptr = NULL;
+if (head == NULL)
+return;
+while (head != NULL)
+{
+ptr = head;
+head = head->next;
+free(ptr);
+}
+ptr = NULL;
 }

@@ -54,6 +54,7 @@ int monty_exe(char **b, int func_num, unsigned int num)
 
 	}
 	}
+	free(inst);
 	return (0);
 }
 
@@ -111,4 +112,24 @@ void monty_pall(stack_t **stack, unsigned int line_number)
 		printf("%d\n", (*stack)->n);
 		*stack = (*stack)->prev;
 	}
+}
+
+/**
+* free_dlistint - Frees nodes of a d-list
+* @head: Pointer to first node
+* Return: Void
+*/
+void monty_free(void)
+{
+	stack_t *ptr;
+
+	if (monty_head == NULL)
+		return;
+	while (monty_head != NULL)
+	{
+		ptr = monty_head;
+		monty_head = monty_head->next;
+		free(ptr);
+	}
+	ptr = NULL;
 }

@@ -44,5 +44,7 @@ int main(int argc, char **argv)
 		monty_exe(buffer, funct_s, line_num);
 	}
 	fclose(f_open);
+	free(buffer);
+	monty_free();
 	return (0);
 }
