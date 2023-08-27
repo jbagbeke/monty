@@ -34,7 +34,7 @@ int valid_int(char *str)
  *
  *
  */
-int check_validity(char *buffer)
+int check(char *buffer)
 {
 	if (valid_int(buffer) == 1)
 		return (1);

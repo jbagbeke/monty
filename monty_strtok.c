@@ -18,7 +18,7 @@ char **monty_tok(char *str, int *num)
 
 	if (args == NULL || str_cpy == NULL)
 	{
-		fprintf(stderr, "Error: Malloc\n");
+		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
 
@@ -31,7 +31,7 @@ char **monty_tok(char *str, int *num)
 
 	if (args[i] == NULL)
 	{
-	fprintf(stderr, "Error: Malloc\n");
+	fprintf(stderr, "Error: malloc failed\n");
 	free(args);
 	exit(EXIT_FAILURE);
 	}

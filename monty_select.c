@@ -17,11 +17,12 @@ instruction_t *select_funct(int func_num, char *buf)
 	monty_instruct = malloc(sizeof(instruction_t));
 	if (monty_instruct == NULL)
 	{
-		fprintf(stderr, "Error: Malloc\n");
+		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
 	f1[1] = monty_push;
-	/*f1[2] = monty_pall;
+	f1[2] = monty_pall;
+	/*
 	f1[3] = monty_pint;
 	f1[4] = monty_pop;
 	f1[5] = monty_swap;

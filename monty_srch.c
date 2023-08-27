@@ -7,10 +7,9 @@
  *
  *
  */
-int monty_search(char **str, unsigned int line_number)
+int monty_search(char **str)
 {
-	char *com, *com2, *token, *token2, *joined;
-	instruction_t *inst;
+	char *com, *com2, *token, *joined;
 	int t_len, func_num = 1;
 
 	com = "push pall pint pop swap add nop sub";
@@ -20,7 +19,7 @@ int monty_search(char **str, unsigned int line_number)
 
 	if (!joined)
 	{
-		fprintf(stderr, "Error: Malloc\n");
+		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
 	strcpy(joined, com);
@@ -31,9 +30,6 @@ int monty_search(char **str, unsigned int line_number)
 	{
 		if (strcmp(token, str[0]) == 0)
 		{
-			 //inst = select_funct(func_num, str[0]);
-			// monty_exe(inst, str, line_number);
-			
 			free(joined);
 			return (func_num);
 		}
@@ -41,8 +37,6 @@ int monty_search(char **str, unsigned int line_number)
 		func_num++;
 		token = strtok(NULL, " ");
 	}
-	printf("HELLOOO\n");
-	fflush(stdout);
 	free(joined);
 	return (0);
 }

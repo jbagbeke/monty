@@ -43,17 +43,18 @@ extern stack_t *monty_head;
 
 char **monty_tok(char *str, int *num);
 void monty_space(char *command);
-int monty_search(char **str, unsigned int line_number);
+int monty_search(char **str);
 int valid_int(char *str);
 instruction_t *select_funct(int func_num, char *buf);
 int monty_exe(char **b, int func_num, unsigned int num);
-int check_validity(char *buffer);
+int check(char *buffer);
 int count_tokens(char **buffer);
 stack_t *add_node(stack_t *node1);
 stack_t *monty_add__end(stack_t *node1);
-void monty_print();
+void monty_pall(stack_t **stack, unsigned int line_number);
 void monty_push(stack_t **stack, unsigned int line_number);
 int monty_calc(stack_t *h);
+void push_error(unsigned int num);
 
 
 #endif /* MONTY_H */

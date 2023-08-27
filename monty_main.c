@@ -35,16 +35,14 @@ int main(int argc, char **argv)
 		monty_space(m_line);
 		buffer = monty_tok(m_line, cnt);
 		line_num++;
-		funct_s = monty_search(buffer, line_num);
+		funct_s = monty_search(buffer);
 		if (funct_s == 0)
 		{
 			fprintf(stderr, "L%d: unknown instruction %s\n", line_num, buffer[0]);
-		continue;
+			exit(EXIT_FAILURE);
 		}
 		monty_exe(buffer, funct_s, line_num);
 	}
-
-	monty_print();
 	fclose(f_open);
 	return (0);
 }

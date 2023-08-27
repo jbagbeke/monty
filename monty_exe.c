@@ -18,29 +18,30 @@ int monty_exe(char **b, int func_num, unsigned int num)
 
 	count = count_tokens(b);
 
-	/*monty_head = malloc(sizeof(stack_t));
-	if (!monty_head)
-		exit(EXIT_FAILURE);*/
+	if (count == 1 && strcmp(b[0], "push") == 0)
+		push_error(num);
 
 	for (i = 1; i < count; i++)
 	{
-		if (check_validity(b[i]) == 0)
+		if (check(b[i]) == 0)
 	{
 		inst = select_funct(func_num, b[0]);
 	
-	if (strcmp(b[0], "push") == 0)
-	{
-		monty_stack = malloc(sizeof(stack_t));
-		if (monty_stack == NULL)
-	{
-		fprintf(stderr, "Error: Malloc\n");
-		exit(EXIT_FAILURE);
-	}
-		monty_stack->n = atoi(b[i]);
+		if (strcmp(b[0], "push") == 0)
+		{
+			monty_stack = malloc(sizeof(stack_t));
+
+			if (monty_stack == NULL)
+			{
+				fprintf(stderr, "Error: malloc failed\n");
+				exit(EXIT_FAILURE);
+			}
+
+			monty_stack->n = atoi(b[i]);
+		}
+			inst->f(&monty_stack, num);
 	}
 
-		inst->f(&monty_stack, num);
-	}
 	}
 	return (0);
 }
@@ -55,6 +56,7 @@ int monty_exe(char **b, int func_num, unsigned int num)
 void monty_push(stack_t **stack, unsigned int line_number)
 {
 	stack_t *ptr;
+	(void)line_number;
 
 	if (monty_head == NULL)
 	{
@@ -73,15 +75,6 @@ void monty_push(stack_t **stack, unsigned int line_number)
 		(*stack)->prev = ptr;
 		(*stack)->next = NULL;
 	}
-
-	/*monty_head = *stack;
-	if (monty_head == NULL)
-	{
-	
-	printf("I AM NULL\n");
-	}
-	monty_head = *stack;*/
-
 }
 
 
@@ -90,10 +83,13 @@ void monty_push(stack_t **stack, unsigned int line_number)
 * @h: Pointer to first element of list
 * Return: Number of elements in a list
 */
-void monty_print(void)
+void monty_pall(stack_t **stack, unsigned int line_number)
 {
 	stack_t *ptr, *ptr2;
 	int num, i;
+
+	(void)line_number;
+	(void)stack;
 
 	ptr = monty_head;
 	ptr2 = monty_head;
