@@ -7,11 +7,12 @@
  *
  *
  */
-int monty_search(char *str)
+int monty_search(char **str, unsigned int line_number)
 {
 	char *com, *com2, *token, *token2, *joined;
-	int t_len, valid = 0, func_num = 0;
-	
+	instruction_t *inst;
+	int t_len, func_num = 1;
+
 	com = "push pall pint pop swap add nop sub";
 	com2 = " div mul mod pchar pstr rotl rotr";
 	t_len = strlen(com) + strlen(com2) + 1;
@@ -28,22 +29,20 @@ int monty_search(char *str)
 
 	while (token != NULL)
 	{
-		if (strcmp(token, str) == 0)
+		if (strcmp(token, str[0]) == 0)
 		{
-			valid++;
-			token2 = strtok(joined, " ");
-			while (token2 != NULL)
-			{
-			if (strcmp(str, token2) == 0)
-				break;
-			token2 = strtok(NULL, " ");
-			func_num++;
-			}
-			select_funct(func_num);
-			break;
+			 //inst = select_funct(func_num, str[0]);
+			// monty_exe(inst, str, line_number);
+			
+			free(joined);
+			return (func_num);
 		}
+
+		func_num++;
 		token = strtok(NULL, " ");
 	}
+	printf("HELLOOO\n");
+	fflush(stdout);
 	free(joined);
-	return (valid);
+	return (0);
 }

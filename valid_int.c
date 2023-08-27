@@ -8,7 +8,7 @@
  *
  *
  */
-void valid_int(char *str)
+int valid_int(char *str)
 {
 	if (*str == '-' || *str == '+')
 		str++;
@@ -22,6 +22,22 @@ void valid_int(char *str)
 			return (1);
 		str++;
 	}
+
+	return (0);
+}
+
+
+/**
+ *
+ *
+ *
+ *
+ *
+ */
+int check_validity(char *buffer)
+{
+	if (valid_int(buffer) == 1)
+		return (1);
 
 	return (0);
 }

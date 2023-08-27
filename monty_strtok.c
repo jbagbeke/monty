@@ -5,12 +5,13 @@
  * @str: String to be tokenized
  * Return: Char **(tokens)
  */
-char **monty_tok(char *str)
+char **monty_tok(char *str, int *num)
 {
 	char **args, *delim = " \t\n$";
 	char *token, *str_cpy;
 	int i = 0;
 
+	*num = 0;
 	args = malloc(strlen(str) * sizeof(char *));
 
 	str_cpy = malloc(strlen(str) * sizeof(char *));
@@ -37,6 +38,7 @@ char **monty_tok(char *str)
 	strcpy(args[i], token);
 	token = strtok(NULL, delim);
 	i++;
+	(*num)++;
 	}
 	args[i] = NULL;
 

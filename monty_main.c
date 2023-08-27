@@ -12,6 +12,7 @@ int main(int argc, char **argv)
 	char **buffer, *m_line = NULL;
 	unsigned int line_num = 0;
 	size_t m_len = 0;
+	int *cnt, count, funct_s;
 	ssize_t m_read;
 	FILE *f_open;
 
@@ -21,6 +22,7 @@ int main(int argc, char **argv)
 		exit(EXIT_FAILURE);
 	}
 
+	cnt = &count;
 	f_open = fopen(argv[1], "r");
 	if (!f_open)
 	{
@@ -31,12 +33,15 @@ int main(int argc, char **argv)
 	while ((m_read = getline(&m_line, &m_len, f_open)) != -1)
 	{
 		monty_space(m_line);
-		buffer = monty_tok(m_line);
-		line_num += 1;
-
-		if (monty_search(buffer[0]) != 1)
+		buffer = monty_tok(m_line, cnt);
+		line_num++;
+		funct_s = monty_search(buffer, line_num);
+		if (funct_s == 0)
+		{
 			fprintf(stderr, "L%d: unknown instruction %s\n", line_num, buffer[0]);
-
+		continue;
+		}
+		monty_exe(buffer, funct_s, line_num);
 	}
 
 	fclose(f_open);
